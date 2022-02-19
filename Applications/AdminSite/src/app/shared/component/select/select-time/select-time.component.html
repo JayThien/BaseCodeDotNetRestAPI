@@ -1,0 +1,8 @@
+<mat-form-field appearance="outline">
+  <mat-label>{{title}}</mat-label>
+  <mat-select [disabled]="isDisable" [(value)]="value" (selectionChange)="selected($event)">
+    <mat-option *ngFor="let data of datas" [value]="data">
+      {{data}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

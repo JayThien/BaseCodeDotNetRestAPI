@@ -1,0 +1,22 @@
+<div class="paginator" *ngIf="total > 0">
+  <div class="row justify-content-end">
+    <div class="col-xl-4 col-lg-8 col-md-12 ">
+      <div style="float: right;">
+        <ng-container *ngFor=" let page of pages">
+          <button (click)="selected(page)"
+            [ngClass]="{'isSelected': pageIndex == page.value, 'disabled': isDisable(page)}" [disabled]="isDisable(page)">
+            {{page.title}}
+          </button>
+        </ng-container>
+      </div>
+    </div>
+    <div class="col-xl-1 col-lg-3 col-md-12">
+      <div class="quick-jumper">
+        <form (keyup.enter)="jumpTo()">
+          <span>Go to</span>
+          <input type="number" [(ngModel)]="jumpPage" name="jump-input" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

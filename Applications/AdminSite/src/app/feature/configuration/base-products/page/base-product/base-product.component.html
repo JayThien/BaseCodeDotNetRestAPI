@@ -1,0 +1,51 @@
+<form [formGroup]="form" (keyup.enter)="submit()" novalidate>
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <h1 mat-dialog-title>New Base Product</h1>
+      <span class="spacer"></span>
+      <mat-icon mat-dialog-close>close_outlined</mat-icon>
+    </mat-toolbar-row>
+    <mat-toolbar-row class="d-flex justify-content-center" style="height: 160px;">
+      <app-uploader [value]="form.value.imageUrl" [size]="96" (uploaded)="uploaded($event)"></app-uploader>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div class="content-wrapper">
+    <mat-dialog-content class="mat-typography">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Your full name" formControlName="name" />
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-error>
+          <app-validation-message [control]="form.controls.name" controlName="Name">
+          </app-validation-message>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput [rows]="10" placeholder="Description" formControlName="description"></textarea>
+        <mat-error>
+        </mat-error>
+      </mat-form-field>
+      <!-- <mat-form-field appearance="outline">
+        <mat-label>Is Available</mat-label>
+        <mat-select formControlName="isAvailable">
+          <mat-option value="true">Yes</mat-option>
+          <mat-option value="false">No</mat-option>
+        </mat-select>
+      </mat-form-field> -->
+      <app-select-category [value]="form.value.category" (valueOnChange)="categoryOnChange($event)">
+      </app-select-category>
+
+      <app-select-sub-category [value]="form.value.subCategory" [category]="form.value.category"
+        (valueOnChange)="subCategoryOnChange($event)">
+      </app-select-sub-category>
+
+
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-stroked-button [mat-dialog-close]="true" cdkFocusInitial (click)="submit()"
+        [disabled]="form.invalid">{{isCreate ? 'Create' : 'Save'}}</button>
+    </mat-dialog-actions>
+  </div>
+</form>

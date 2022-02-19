@@ -1,0 +1,11 @@
+<nz-upload class="avatar-uploader" [nzAction]="uploadAPI" nzListType="picture-card" [nzShowUploadList]="false"
+  (nzChange)="handleChange($event)" [ngStyle]="{'height.px': height}"  [nzDisabled]="isDisable">
+  <ng-container>
+    <img [src]="uploadedPath" *ngIf="isShowAfterUpload && uploadedPath" />
+    <div>
+      <nz-avatar *ngIf="isAvatar && uploadedPath" [nzSize]="128" nzIcon="user" [nzSrc]="uploadedPath">
+      </nz-avatar>
+    </div>
+    <i class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'camera'" *ngIf="uploadedPath == ''" style="font-size: 32px;"></i>
+  </ng-container>
+</nz-upload>

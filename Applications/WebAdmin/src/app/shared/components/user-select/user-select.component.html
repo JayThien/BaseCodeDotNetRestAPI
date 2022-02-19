@@ -1,0 +1,11 @@
+<nz-select [(ngModel)]="selectedUser" nzPlaceHolder="Nhập tên hoặc số điện thoại" nzAllowClear
+  [nzDropdownRender]="renderTemplate" (nzOnSearch)="onSearch($event)" nzShowSearch (ngModelChange)="selected()"
+  (keyup.enter)="search()">
+  <nz-option *ngFor="let o of optionList" [nzValue]="o.id" [nzLabel]="o.label" nzCustomContent>
+    <nz-avatar nzSize="small" [nzSrc]="o.avatarURL"></nz-avatar>
+    {{o.label}}
+  </nz-option>
+</nz-select>
+<ng-template #renderTemplate>
+  <nz-spin *ngIf="false"></nz-spin>
+</ng-template>

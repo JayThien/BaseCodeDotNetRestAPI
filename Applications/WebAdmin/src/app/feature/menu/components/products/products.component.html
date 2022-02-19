@@ -1,0 +1,7 @@
+<nz-tabset nzTabPosition="right" [nzSelectedIndex]="selectedTab">
+  <nz-tab *ngFor="let c of categories" [nzTitle]="categoryName.get(c)">
+    <ng-template nz-tab>
+      <app-product-tab [categoryInput]="c" [menu]="menu"></app-product-tab>
+    </ng-template>
+  </nz-tab>
+</nz-tabset>

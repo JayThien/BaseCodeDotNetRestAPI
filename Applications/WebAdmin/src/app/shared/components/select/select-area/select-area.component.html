@@ -1,0 +1,13 @@
+<nz-form-item>
+  <nz-form-label>Area</nz-form-label>
+  <nz-form-control>
+    <nz-select nzShowSearch nzPlaceHolder="Select area" *ngIf="!isView" [(ngModel)]="value"
+      (ngModelChange)="selected.emit($event)" name="select-area">
+      <nz-option *ngFor="let area of areas" [nzLabel]="area.label" [nzValue]="area.value">
+      </nz-option>
+    </nz-select>
+    <ng-container *ngIf="isView">
+      <!-- <img class="flat-icon" [src]="countryFlag.get(value)">{{countryName.get(value)}} -->
+    </ng-container>
+  </nz-form-control>
+</nz-form-item>

@@ -1,0 +1,37 @@
+<div *ngIf="isView">
+  <img class="flat-icon" [src]="countryFlag.get(form.value.country)" style="margin-right: 6px;">
+  {{countryName.get(form.value.country)}} - {{form.value.areaName}}
+  <i class="action" nz-icon nzType="edit" (click)="isView = false"></i>
+</div>
+
+<div *ngIf="!isView">
+  <form nz-form [formGroup]="form" nzLayout="inline">
+    <nz-form-item>
+      <nz-form-control nzHasFeedback>
+        <nz-select style="width: 200px;" nzShowSearch nzAllowClear nzPlaceHolder="Select country"
+          formControlName="country" (ngModelChange)="countryOnChange($event)">
+          <nz-option *ngFor="let country of countries" nzCustomContent [nzLabel]="countryName.get(country)"
+            [nzValue]="country">
+            <img class="flat-icon" style="margin-right: 4px;"
+              [src]="countryFlag.get(country)" />{{countryName.get(country)}}
+          </nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzHasFeedback>
+        <nz-select style="width: 240px;" nzShowSearch nzAllowClear nzPlaceHolder="Select admin area"
+          formControlName="AreaId">
+          <nz-option *ngFor="let area of areas" [nzLabel]="area.name" [nzValue]="area.id">
+          </nz-option>
+        </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control>
+        <i class="action" nz-icon nzType="check" style="color: green;" (click)="save()"></i>
+        <i class="action" nz-icon nzType="close" style="color: red;" (click)="discard()"></i>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</div>

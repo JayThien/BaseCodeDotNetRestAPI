@@ -1,0 +1,61 @@
+<form [formGroup]="form" (keyup.enter)="submit()" novalidate>
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <h1 mat-dialog-title>New User</h1>
+      <span class="spacer"></span>
+      <mat-icon mat-dialog-close>close_outlined</mat-icon>
+    </mat-toolbar-row>
+    <mat-toolbar-row class="d-flex justify-content-center" style="height: 160px;">
+      <app-uploader [value]="form.value.avatarURL" [isAvatar]="true"
+        [size]="96" (uploaded)="uploaded($event)"></app-uploader>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div class="content-wrapper">
+    <mat-dialog-content class="mat-typography">
+      <mat-form-field appearance="outline">
+        <mat-label>Full name</mat-label>
+        <input matInput placeholder="Your full name" formControlName="fullname" />
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-error>
+          <app-validation-message [control]="form.controls.fullname" [controlName]="'Full name'">
+          </app-validation-message>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Date of birth</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dateOfBirth">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error>
+          <app-validation-message [control]="form.controls.dateOfBirth" [controlName]="'Date of birth'">
+          </app-validation-message>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Your email" formControlName="email" />
+        <mat-icon matSuffix>mail_outline</mat-icon>
+        <mat-error>
+          <app-validation-message [control]="form.controls.email" [controlName]="'Email'"></app-validation-message>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Phone number</mat-label>
+        <input matInput placeholder="Your phone number" formControlName="phoneNumber" appPhoneMask />
+        <mat-icon matSuffix>phone</mat-icon>
+        <mat-error>
+          <app-validation-message [control]="form.controls.phoneNumber" [controlName]="'Phone number'">
+          </app-validation-message>
+        </mat-error>
+      </mat-form-field>
+      <app-select-role [value]="form.value.roleId" (valueOnChange)="roleOnChange($event)"></app-select-role>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-stroked-button [mat-dialog-close]="true" cdkFocusInitial (click)="submit()"
+        [disabled]="form.invalid">{{isCreate ? 'Create' : 'Save'}}</button>
+    </mat-dialog-actions>
+  </div>
+</form>

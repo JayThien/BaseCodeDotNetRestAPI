@@ -1,0 +1,160 @@
+<nz-spin [nzSpinning]="loaderService.isLoading" nzSize="large">
+  <div class="container">
+    <nz-breadcrumb>
+      <nz-breadcrumb-item>
+        Home
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        <a [routerLink]="['/promotions/']">Promotions</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        <!-- {{form.controls.name.value}} -->
+      </nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <nz-card>
+      <form nz-form [formGroup]="form" nzLayout="vertical" class="row">
+        <div class="col-lg-3">
+          <app-uploader uploadStyle="upload" isShowAfterUpload="true" (uploaded)="uploaded($event)"
+            [uploadedPath]="form.value.imageUrl"></app-uploader>
+          <nz-form-control>
+          </nz-form-control>
+          <div class="action">
+            <button nz-button nzType="primary" nzBlock (click)="create()" [disabled]="!form.valid"
+              *ngIf="wizardService._isCreate">Create</button>
+            <!-- <button nz-button nzType="primary" nzBlock *ngIf="!wizardService._isCreate" (click)="save()">Save</button> -->
+            <button nz-button nzBlock *ngIf="!wizardService._isCreate" (click)="resetForm()">Exit</button>
+          </div>
+        </div>
+        <div class="col-lg-9">
+          <div class="row g-3">
+            <div class="col-4">
+              <nz-form-item>
+                <nz-form-label>Promotion code</nz-form-label>
+                <nz-form-control nzHasFeedback [nzErrorTip]="nameValidation">
+                  <input nz-input formControlName="code" />
+                  <ng-template #nameValidation let-control>
+                    <app-validation-message [control]="control" controlName="code"></app-validation-message>
+                  </ng-template>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div class="col-4">
+              <nz-form-item>
+                <nz-form-label>From date</nz-form-label>
+                <nz-form-control>
+                  <nz-date-picker [nzDisabledDate]="disabledStartDate" nzShowTime nzFormat="yyyy-MM-dd HH:mm:ss"
+                    formControlName="from" nzPlaceHolder="Start" (nzOnOpenChange)="handleStartOpenChange($event)">
+                  </nz-date-picker>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div class="col-4">
+              <nz-form-item>
+                <nz-form-label>To date</nz-form-label>
+                <nz-form-control>
+                  <!-- <nz-time-picker formControlName="from" nzFormat="HH:mm"></nz-time-picker> -->
+                  <nz-date-picker #endDatePicker [nzDisabledDate]="disabledEndDate" nzShowTime
+                    nzFormat="yyyy-MM-dd HH:mm:ss" formControlName="to" nzPlaceHolder="End"
+                    (nzOnOpenChange)="handleEndOpenChange($event)"></nz-date-picker>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div class="row g-3">
+            <div class="col-12">
+              <nz-form-item>
+                <nz-form-label>Description</nz-form-label>
+                <nz-form-control nzHasFeedback [nzErrorTip]="nameValidation">
+                  <textarea rows="5" nz-input formControlName="description"></textarea>
+
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div class="row g-3">
+            <div class="col-3">
+              <app-select-country [isView]="false" [value]="form.controls.country.value"
+                (selected)="countryOnChange($event)">
+              </app-select-country>
+            </div>
+            <div class="col-3">
+              <app-select-area [isView]="false" [value]="form.controls.areaId.value"
+                [country]="form.controls.country.value" (selected)="areaOnChange($event)">
+              </app-select-area>
+            </div>
+            <div class="col-3">
+              <nz-form-item>
+                <nz-form-label>Min point</nz-form-label>
+                <nz-form-control nzHasFeedback [nzErrorTip]="nameValidation">
+                  <nz-input-number nz-input formControlName="minPoint"></nz-input-number>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div class="col-3">
+              <nz-form-item>
+                <nz-form-label>Max point</nz-form-label>
+                <nz-form-control nzHasFeedback [nzErrorTip]="nameValidation">
+                  <nz-input-number nz-input formControlName="maxPoint"></nz-input-number>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <div class="row g-3">
+            <div class="col-4">
+              <nz-form-item>
+                <nz-form-label>Maximum discount</nz-form-label>
+                <nz-form-control nzHasFeedback [nzErrorTip]="nameValidation">
+                  <nz-input-group [nzAddOnBefore]="addOnBeforeTemplate">
+                    <nz-input-number formControlName="maximumDiscount" nz-input nzMin=0>
+                    </nz-input-number>
+                  </nz-input-group>
+                  <ng-template #addOnBeforeTemplate>
+                    <span nz-typography> {{countryCurrency.get(form.controls.country.value)}}
+                    </span>
+                  </ng-template>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div class="col-4">
+              <nz-form-item>
+                <nz-form-label>Mininum order price</nz-form-label>
+                <nz-form-control nzHasFeedback [nzErrorTip]="nameValidation">
+                  <nz-input-group [nzAddOnBefore]="addOnBeforeTemplate">
+                    <nz-input-number formControlName="minimumOrderPrice" nz-input nzMin=0>
+                    </nz-input-number>
+                  </nz-input-group>
+                  <ng-template #addOnBeforeTemplate>
+                    <span nz-typography> {{countryCurrency.get(form.controls.country.value)}}
+                    </span>
+                  </ng-template>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div class="col-4">
+              <nz-form-item>
+                <nz-form-label>Discount price</nz-form-label>
+                <nz-form-control nzHasFeedback [nzErrorTip]="nameValidation">
+                  <nz-input-group [nzAddOnBefore]="discountPriceBeforeTemplate">
+                    <nz-input-number formControlName="discountPrice" nz-input nzMin=0>
+                    </nz-input-number>
+                  </nz-input-group>
+                  <ng-template #discountPriceBeforeTemplate>
+                    <nz-select formControlName="isPercent">
+                      <nz-option nzLabel="%" [nzValue]="true"></nz-option>
+                      <nz-option [nzLabel]="countryCurrency.get(form.controls.country.value)" [nzValue]="false">
+                      </nz-option>
+                    </nz-select>
+                  </ng-template>
+                  <ng-template #nameValidation let-control>
+                    <app-validation-message [control]="control" controlName="minimum order price">
+                    </app-validation-message>
+                  </ng-template>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </div>
+      </form>
+    </nz-card>
+  </div>
+</nz-spin>

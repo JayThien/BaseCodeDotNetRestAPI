@@ -1,0 +1,22 @@
+@import "../../../../styles.scss";
+
+.mat-nav-list {
+  a {
+    color: $side-nav-color !important;
+    height: 40px;
+  }
+  a:focus,
+  a.hold {
+    background-color: $side-nav-item-active-background;
+    color: $side-nav-item-active-color !important;
+  }
+}
+
+.group {
+  padding-left: 10px;
+  color: $side-nav-group-color !important;
+  h4 {
+    margin-bottom: 4px !important;
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,51 @@
+<div class="app-container" [class.app-is-mobile]="mobileQuery.matches">
+  <div [style.paddingLeft.px]="mobileQuery.matches ? 0 : 240">
+    <mat-toolbar color="primary" class="app-toolbar" *ngIf="!isShowSearchToolBar">
+      <button mat-icon-button (click)="snav.toggle()" *ngIf="mobileQuery.matches">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="spacer"></span>
+      <div class="toolbar-separator"></div>
+      <button mat-button (click)="isShowSearchToolBar = true">
+        <mat-icon>search</mat-icon>
+      </button>
+      <div class="toolbar-separator"></div>
+      <button mat-button (click)="notiSnav.toggle()">
+        <mat-icon>event_note_outline</mat-icon>
+      </button>
+      <div class="toolbar-separator"></div>
+      <button mat-button [matMenuTriggerFor]="beforeMenu" style="padding: 6px;">
+        <app-avatar [avatarUrl]="'assets/images/mock/122021161445.PNG'" [size]="'small'"></app-avatar>
+        <span style="margin: 0 6px;" *ngIf="!mobileQuery.matches">Lục Kiều Minh Trúc</span>
+        <mat-icon *ngIf="!mobileQuery.matches">keyboard_arrow_down</mat-icon>
+      </button>
+      <mat-menu #beforeMenu="matMenu" xPosition="before">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+      </mat-menu>
+    </mat-toolbar>
+    <mat-toolbar color="primary" class="app-toolbar" *ngIf="isShowSearchToolBar">
+      <mat-form-field floatLabel="never">
+        <input matInput type="text" placeholder="Search">
+        <button mat-icon-button matSuffix (click)="isShowSearchToolBar = false">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </mat-toolbar>
+  </div>
+
+  <mat-sidenav-container class="app-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [opened]="!mobileQuery.matches"
+      [fixedInViewport]="true">
+      <app-user-brief [fullname]="'Lục Kiều Minh Trúc'" [roleName]="'Admin'" [avatarUrl]="'assets/images/mock/122021161445.PNG'">
+      </app-user-brief>
+      <app-sidenav></app-sidenav>
+    </mat-sidenav>
+    <mat-sidenav #notiSnav [mode]="'over'" [fixedInViewport]="true" position="end">
+      <app-notification-sidenav></app-notification-sidenav>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

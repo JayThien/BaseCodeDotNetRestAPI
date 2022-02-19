@@ -1,0 +1,50 @@
+.media-boundary {
+  background-color: black;
+  position: relative;
+  height: 100% !important;
+}
+
+img {
+  padding: 0;
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+app-uploader {
+  padding: 0;
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.overview {
+  p {
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+  }
+}
+
+.action {
+  padding-top: 6px;
+  padding-right: 6px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  [nz-icon] {
+    padding: 6px;
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 50%;
+    font-size: 24px;
+    color: #ffffff;
+  }
+  [nz-icon]:hover {
+    cursor: pointer;
+  }
+}

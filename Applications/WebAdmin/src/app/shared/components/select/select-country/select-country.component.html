@@ -1,0 +1,15 @@
+<nz-form-item>
+  <nz-form-label>Country</nz-form-label>
+  <nz-form-control>
+    <nz-select nzShowSearch nzPlaceHolder="Select country" *ngIf="!isView" [(ngModel)]="value"
+      (ngModelChange)="selected.emit($event)" name="select-country">
+      <nz-option *ngFor="let country of countries" nzCustomContent [nzLabel]="countryName.get(country)"
+        [nzValue]="country">
+        <img class="flat-icon" [src]="countryFlag.get(country)" />{{countryName.get(country)}}
+      </nz-option>
+    </nz-select>
+    <ng-container *ngIf="isView">
+      <img class="flat-icon" [src]="countryFlag.get(value)">{{countryName.get(value)}}
+    </ng-container>
+  </nz-form-control>
+</nz-form-item>

@@ -1,0 +1,11 @@
+<div class="upload-frame"
+  [ngStyle]="{'background-image': backgroundImage, 'background-size': uploadState == UploadState.Init ? 'auto' :'contain', 'border-radius': isAvatar ? '50%' : '0%'}"
+  [style.width.px]="size" [style.height.px]="size">
+  <div class="dropzone" appDropzone (dropped)="receiveFromDropzone($event)"
+    [ngClass]="{'uploading': uploadState == UploadState.Loading}">
+    <div class="upload-btn-wrapper">
+      <button class="btn" [disabled]="uploadState == UploadState.Loading"></button>
+      <input type="file" (change)="receiveFromInput($event.target)" [disabled]="uploadState == UploadState.Loading">
+    </div>
+  </div>
+</div>

@@ -1,0 +1,72 @@
+<nz-spin [nzSpinning]="loaderService.isLoading" nzSize="large">
+  <div class="container">
+    <nz-breadcrumb>
+      <nz-breadcrumb-item>
+        Home
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        <a (click)="goBack()">{{categoryName.get(form.value.category)}}</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        {{form.value.name}}
+      </nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <nz-card [nzBodyStyle]="{ height: '80vh' }">
+      <form nz-form [formGroup]="form" class="row" nzLayout="vertical">
+        <div class="col-lg-3">
+          <app-uploader uploadStyle="upload" isShowAfterUpload="true" (uploaded)="uploaded($event)"
+            [uploadedPath]="form.value.imageUrl"></app-uploader>
+          <nz-form-control>
+            <label nz-checkbox formControlName="isAvailable">
+              Available
+            </label>
+          </nz-form-control>
+          <div class="action">
+            <button nz-button nzType="primary" nzBlock (click)="create()" [disabled]="!form.valid"
+              *ngIf="wizardService._isCreate">Create</button>
+            <button nz-button nzType="primary" nzBlock *ngIf="!wizardService._isCreate" (click)="save()">Save</button>
+            <button nz-button nzBlock *ngIf="!wizardService._isCreate" (click)="resetForm()">Exit</button>
+          </div>
+        </div>
+        <div class="col-lg-9">
+          <div class="row">
+            <div class="col-4">
+              <nz-form-item>
+                <nz-form-label>Name</nz-form-label>
+                <nz-form-control nzHasFeedback [nzErrorTip]="nameValidation">
+                  <input nz-input formControlName="name" />
+
+                  <ng-template #nameValidation let-control>
+                    <app-validation-message [control]="control" controlName="name">
+                    </app-validation-message>
+                  </ng-template>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div class="col-4">
+              <app-select-category [value]="form.value.category" (selected)="categorySelected($event)">
+              </app-select-category>
+            </div>
+            <div class="col-4">
+              <app-select-subcategory [value]="form.value.subCategory" (selected)="subCategorySelected($event)"
+                [category]="form.value.category">
+              </app-select-subcategory>
+            </div>
+            <div class="col-12">
+              <nz-form-item>
+                <nz-form-label>Description</nz-form-label>
+                <nz-form-control nzHasFeedback [nzErrorTip]="descriptionValidation">
+                  <textarea nz-input formControlName="description" rows="9"></textarea>
+                  <ng-template #descriptionValidation let-control>
+                    <app-validation-message [control]="control" controlName="description">
+                    </app-validation-message>
+                  </ng-template>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </div>
+      </form>
+    </nz-card>
+  </div>
+</nz-spin>

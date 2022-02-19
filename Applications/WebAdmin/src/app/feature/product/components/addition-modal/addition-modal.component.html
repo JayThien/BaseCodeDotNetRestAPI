@@ -1,0 +1,74 @@
+<form nz-form>
+  <nz-form-item>
+    <nz-form-label>Title</nz-form-label>
+    <nz-form-control nzHasFeedback>
+      <input nz-input [(ngModel)]="addition.title" name="title" />
+    </nz-form-control>
+  </nz-form-item>
+  <label nz-checkbox [(ngModel)]="addition.isMultipleSelect" name="isMultipleSelect">Multiple Select</label> <br />
+  <label nz-checkbox [(ngModel)]="addition.isRequired" name="isRequired">Required</label>
+
+</form>
+
+<nz-divider style="margin: 12px 0;"></nz-divider>
+<h5>Addtion item</h5>
+<form nz-form nzLayout="vertical" class="row">
+  <div class="col-6">
+    <nz-form-item>
+      <nz-form-label>Name</nz-form-label>
+      <nz-form-control>
+        <input nz-input [(ngModel)]="newItem.name" name="item-name" />
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+  <div class="col-4">
+    <nz-form-item>
+      <nz-form-label>Price</nz-form-label>
+      <nz-form-control>
+        <input nz-input [(ngModel)]="newItem.price" name="item-price" />
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+  <div class="col-2" style="padding-right: 0 !important;">
+    <nz-form-item style="margin-top: 26px">
+      <nz-form-control>
+        <button nzBlock nz-button nzType="primary" (click)="addNewItem()">Add</button>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+</form>
+<nz-table nzTableLayout="fixed" [nzData]="['']" nzShowPagination="false">
+  <thead>
+    <tr>
+      <th nzWidth="10%">Id</th>
+      <th nzWidth="40%">Name</th>
+      <th nzWidth="30%">Price</th>
+      <th nzWidth="20%"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of addition.items">
+      <ng-container *ngIf="data.id != itemEdited">
+        <td>{{data.id}}</td>
+        <td>{{ data.name }}</td>
+        <td>{{ data.price }}</td>
+        <td>
+          <a (click)="changeToEditState(data.id)"><i nz-icon nzType="edit" nzTheme="outline"></i></a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a (click)="remove(data)"><i nz-icon nzType="delete" nzTheme="outline"></i></a>
+        </td>
+      </ng-container>
+
+      <ng-container *ngIf="data.id == itemEdited">
+        <td>{{data.id}}</td>
+        <td><input nz-input [(ngModel)]="data.name" name="edit-item-name"></td>
+        <td> <input nz-input [(ngModel)]="data.price" name="edit-item-price" /></td>
+        <td>
+          <a (click)="saveItem()"><i nz-icon nzType="check" nzTheme="outline"></i></a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a (click)="discardItem(data.id)"><i nz-icon nzType="close" nzTheme="outline"></i></a>
+        </td>
+      </ng-container>
+    </tr>
+  </tbody>
+</nz-table>

@@ -1,0 +1,21 @@
+<nz-breadcrumb>
+  <nz-breadcrumb-item>
+    Home
+  </nz-breadcrumb-item>
+  <nz-breadcrumb-item>
+    <a [routerLink]="['/menus']">Menus</a>
+  </nz-breadcrumb-item>
+  <nz-breadcrumb-item>
+    {{countryName.get(menu.country)}} - {{menu.areaName}}
+  </nz-breadcrumb-item>
+</nz-breadcrumb>
+
+<nz-card [nzTitle]="title" [nzExtra]="extra">
+  <ng-template #extra>
+    <a [routerLink]="['/product/', 0]" [queryParams]="{menu: menu.id}">New product</a>
+  </ng-template>
+  <ng-template #title>
+    <app-menu-title [menu]="menu"></app-menu-title>
+  </ng-template>
+  <app-products [menu]="menu"></app-products>
+</nz-card>

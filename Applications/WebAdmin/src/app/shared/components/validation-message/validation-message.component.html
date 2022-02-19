@@ -1,0 +1,19 @@
+<div class="error">
+  <p *ngIf="control.hasError('required')">
+    Please input {{controlName}}
+  </p>
+  <p *ngIf="control.hasError('email')">
+    Email không hợp lệ (abc@gmail.com)
+  </p>
+  <p *ngIf="control.hasError('minlength')">
+    {{controlName | titlecase}} không được ít hơn
+    {{control.errors.minlength.requiredLength}} ký tự
+  </p>
+  <p *ngIf="control.hasError('maxlength')">
+    {{controlName | titlecase}} không được nhiều hơn
+    {{control.errors.maxlength.requiredLength}} ký tự
+  </p>
+  <p *ngIf="control.hasError('phoneInvalid')">
+    Số điện thoại không hợp lệ
+  </p>
+</div>

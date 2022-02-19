@@ -1,0 +1,29 @@
+<div class="media-boundary">
+  <div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+      <img *ngIf="!mediaFile.isVideo" [src]="mediaFile.url" />
+      <video *ngIf="mediaFile.isVideo" controls autoplay [src]="mediaFile.url">
+      </video>
+    </div>
+  </div>
+  <div class="action">
+    <i nz-icon nzType="share-alt" nzTheme="outline" style="font-size: 32px; color: #ffffff;"
+      (click)="createTplModal(tplContent, tplFooter)"></i>
+  </div>
+</div>
+
+<ng-template #tplContent let-params let-ref="modalRef">
+  <app-user-mention [(inputValue)]="inputValue" [(mentioned)]="mediaFile.sharedWith" [isMultiRow]="true">
+  </app-user-mention>
+</ng-template>
+
+<ng-template #tplFooter>
+  <div class="">
+    <button style="margin-top: 10px;" nz-button (click)="cancel()">
+      Cancel
+    </button>
+    <button style="margin-top: 10px;" nz-button nzType="primary" (click)="share()" [nzLoading]="tplModalButtonLoading">
+      Share
+    </button>
+  </div>
+</ng-template>

@@ -1,0 +1,9 @@
+<mat-form-field appearance="outline">
+    <mat-label>{{title}}</mat-label>
+    <mat-select [disabled]="isDisable" [(value)]="value" (selectionChange)="selected($event)">
+        <mat-option *ngFor="let user of users" [value]="user.value">
+            <app-avatar [avatarUrl]="user.avatarURL" [size]="'xsmall'"></app-avatar>
+            {{user.label}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>

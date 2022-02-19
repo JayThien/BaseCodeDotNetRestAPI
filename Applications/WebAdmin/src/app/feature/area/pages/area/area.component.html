@@ -1,0 +1,45 @@
+<nz-card nzTitle="Admin area">
+  <div class="d-flex justify-content-between" style="margin: 6px 0">
+    <nz-input-group [nzSuffix]="suffixIconSearch" style="width: 40%;">
+      <input type="text" nz-input placeholder="Please input the phonenumber or name of restaurant" name="searchTerm"
+        [(ngModel)]="AreasRequest.searchTerm" (keyup.enter)="loadData()" />
+      <ng-template #suffixIconSearch>
+        <i nz-icon nzType="search" (click)="loadData()"></i>
+      </ng-template>
+    </nz-input-group>
+    <div class="action">
+      <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select country" [(ngModel)]="AreasRequest.country"
+        (ngModelChange)="loadData()">
+        <nz-option *ngFor="let country of countries" nzCustomContent [nzLabel]="countryName.get(country)"
+          [nzValue]="country">
+          <img class="flat-icon" [src]="countryFlag.get(country)" />{{countryName.get(country)}}
+        </nz-option>
+      </nz-select>
+      <button nz-button nzType="primary" (click)="addArea()"><i nz-icon nzType="plus"></i>Add new</button>
+    </div>
+  </div>
+  <nz-table nzShowSizeChanger="false" [nzData]="areasResponse.data" [nzFrontPagination]="false"
+    [nzLoading]="loaderService.isLoading" [nzTotal]="areasResponse.totalRows" [nzPageSize]="AreasRequest.rowsPerPage"
+    (nzQueryParams)="onQueryParamsChange($event)">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Code</th>
+        <th>Country</th>
+        <th>Admin</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of areasResponse.data" (click)="edit(data)">
+        <td>{{ data.id }}</td>
+        <td>{{ data.name }}</td>
+        <td>{{ data.code}}</td>
+        <td><img class="flat-icon" [src]="countryFlag.get(data.country)">{{countryName.get(data.country)}}</td>
+        <td>{{ data.user?.fullname }}</td>
+        <td><i nz-icon nzType="edit" nzTheme="outline"></i></td>
+      </tr>
+    </tbody>
+  </nz-table>
+</nz-card>

@@ -1,0 +1,10 @@
+<nz-form-item [formGroup]="form">
+    <nz-form-label>Restaurant</nz-form-label>
+    <nz-form-control>
+        <nz-select *ngIf="!isView" nzShowSearch formControlName="restaurantId">
+            <nz-option *ngFor="let restaurant of restaurants" [nzLabel]="restaurant.label" [nzValue]="restaurant.value">
+            </nz-option>
+        </nz-select>
+        <span nz-typography *ngIf="isView">{{label}}</span>
+    </nz-form-control>
+</nz-form-item>

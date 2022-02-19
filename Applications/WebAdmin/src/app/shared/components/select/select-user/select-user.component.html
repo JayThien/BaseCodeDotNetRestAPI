@@ -1,0 +1,20 @@
+<nz-form-item>
+  <nz-form-label>Manager</nz-form-label>
+  <nz-form-control>
+    <!-- <nz-select nzShowSearch nzPlaceHolder="Select area" *ngIf="!isView" [(ngModel)]="value"
+      (ngModelChange)="selected.emit($event)" name="select-area">
+      <nz-option *ngFor="let area of areas" [nzLabel]="area.name" [nzValue]="area.id">
+      </nz-option>
+    </nz-select> -->
+    <nz-select nzShowSearch [nzAllowClear]="allowClear" nzPlaceHolder="Select user" [nzOptionHeightPx]="48"
+      *ngIf="!isView" [(ngModel)]="value" (ngModelChange)="selected.emit($event)" name="select-user">
+      <nz-option *ngFor="let user of users" nzCustomContent [nzLabel]="user.label" [nzValue]="user.value">
+        <nz-avatar nzIcon="user" [nzSrc]="user.avatarURL" style="margin-right: 10px;"></nz-avatar>{{user.label}}
+      </nz-option>
+    </nz-select>
+    <ng-container *ngIf="isView">
+      <!-- <nz-avatar nzIcon="user" [nzSrc]="selectedUser.avatarURL" style="margin-right: 10px;"></nz-avatar>
+      {{selectedUser.label}} -->
+    </ng-container>
+  </nz-form-control>
+</nz-form-item>

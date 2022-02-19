@@ -1,0 +1,36 @@
+.flat-icon {
+  margin-right: 6px;
+  margin-top: -2px;
+}
+
+.action {
+  margin-top: 10px;
+}
+
+.action * {
+  margin-top: 10px;
+}
+
+nz-time-picker,
+nz-date-picker,
+nz-input-number {
+  width: 100%;
+}
+
+nz-breadcrumb {
+  margin-bottom: 32px;
+}
+
+nz-form-label {
+  letter-spacing: 0.07272727em;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1rem;
+  hyphens: auto;
+  word-break: break-word;
+  word-wrap: break-word;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  padding-top: 4px;
+}

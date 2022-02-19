@@ -1,0 +1,10 @@
+<nz-form-item>
+  <nz-form-label>Category</nz-form-label>
+  <nz-form-control>
+    <nz-select *ngIf="!isView" nzShowSearch [(ngModel)]="value" (ngModelChange)="selected.emit(value)">
+      <nz-option *ngFor="let category of categories" [nzLabel]="categoriesName.get(category)" [nzValue]="category">
+      </nz-option>
+    </nz-select>
+    <span nz-typography *ngIf="isView">{{categoriesName.get(value)}}</span>
+  </nz-form-control>
+</nz-form-item>

@@ -1,0 +1,40 @@
+<form [formGroup]="form" (keyup.enter)="submit()" novalidate>
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <h1 mat-dialog-title>New area</h1>
+      <span class="spacer"></span>
+      <mat-icon mat-dialog-close>close_outlined</mat-icon>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div class="content-wrapper">
+    <mat-dialog-content class="mat-typography">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Area name" formControlName="name" />
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-error>
+          <!-- <app-validation-message [control]="form.controls.name" [controlName]="'Area name'">
+          </app-validation-message> -->
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Code</mat-label>
+        <input matInput placeholder="Area Code" formControlName="code" />
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-error>
+          <!-- <app-validation-message [control]="form.controls.code" [controlName]="'Area code'">
+          </app-validation-message> -->
+        </mat-error>
+      </mat-form-field>
+
+      <app-select-country [value]="form.value.country" (valueOnChange)="selectedCountry($event)"></app-select-country>
+      <app-select-user [value]="form.value.userId" [roleName]="'AREA_MANAGER'" [title]="'Manager'"
+        (valueOnChange)="selectedManager($event)"></app-select-user>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-stroked-button [mat-dialog-close]="true" cdkFocusInitial (click)="submit()"
+        [disabled]="form.invalid">{{isCreate ? 'Create' : 'Save'}}</button>
+    </mat-dialog-actions>
+  </div>
+</form>

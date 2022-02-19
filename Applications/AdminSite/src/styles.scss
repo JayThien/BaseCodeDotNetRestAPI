@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+$side-nav-background: #fff;
+$side-nav-color: #000;
+$side-nav-group-color: #595959;
+$side-nav-item-active-background: rgba(207, 27, 21, 0.2);
+$side-nav-item-active-color: #cf1b15;
+$active-color: #cf1b15;
+$active-background: rgba(207, 27, 21, 0.2);
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  box-shadow: inset 0 0 0 12px rgb(0 0 0 / 37%);
+  border-radius: 12px;
+}
+
+.spacer {
+  flex: 1 0 auto;
+}

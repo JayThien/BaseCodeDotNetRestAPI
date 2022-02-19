@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\BuildingBlocks\EntityFramework\AspNetCore.EntityFramework\AspNetCore.EntityFramework.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\UnitOfWork\AspNetCore.UnitOfWork.EntityFramework\AspNetCore.UnitOfWork.EntityFramework.csproj" />
+    <ProjectReference Include="..\..\Domains\ApplicationDomain\ApplicationDomain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.10" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+  </ItemGroup>
+
+</Project>

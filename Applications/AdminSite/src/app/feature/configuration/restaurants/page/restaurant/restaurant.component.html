@@ -1,0 +1,88 @@
+<form [formGroup]="form" (keyup.enter)="submit()" novalidate>
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <h1 mat-dialog-title>New restaurant</h1>
+      <span class="spacer"></span>
+      <mat-icon mat-dialog-close>close_outlined</mat-icon>
+    </mat-toolbar-row>
+    <mat-toolbar-row class="d-flex justify-content-center" style="height: 180px;">
+      <app-uploader [value]="form.value.imageUrl" [size]="160" (uploaded)="uploaded($event)">
+      </app-uploader>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div class="content-wrapper">
+    <mat-dialog-content class="mat-typography">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Area name" formControlName="name" />
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-error>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Address</mat-label>
+        <textarea matInput [rows]="3" placeholder="Address" formControlName="address"></textarea>
+        <mat-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Reservation Link</mat-label>
+        <textarea matInput [rows]="3" placeholder="Reservation Link" formControlName="reservationLink"></textarea>
+        <mat-error>
+        </mat-error>
+      </mat-form-field>
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Your email" formControlName="email" />
+            <mat-icon matSuffix>mail_outline</mat-icon>
+            <mat-error>
+              <app-validation-message [control]="form.controls.email" [controlName]="'Email'"></app-validation-message>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Phone number</mat-label>
+            <input matInput placeholder="Your phone number" formControlName="phoneNumber" appPhoneMask />
+            <mat-icon matSuffix>phone</mat-icon>
+            <mat-error>
+              <app-validation-message [control]="form.controls.phoneNumber" [controlName]="'Phone number'">
+              </app-validation-message>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <app-select-time title="Open time" [value]="form.value.openTime" (valueOnChange)="openTimeSelected($event)">
+          </app-select-time>
+        </div>
+        <div class="col-6">
+          <app-select-time title="Close time" [value]="form.value.closeTime" (valueOnChange)="closeTimeSelected($event)"></app-select-time>
+        </div>
+      </div>
+      <div class=" row">
+            <div class="col-6">
+              <app-select-country [value]="form.value.country" (valueOnChange)="selectedCountry($event)">
+              </app-select-country>
+            </div>
+            <div class="col-6">
+              <app-select-user [value]="form.value.userId" roleName="RESTAURANT_MANAGER" title="Manager"
+                (valueOnChange)="selectedManager($event)"></app-select-user>
+            </div>
+        </div>
+
+
+
+
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-stroked-button [mat-dialog-close]="true" cdkFocusInitial (click)="submit()"
+        [disabled]="form.invalid">{{isCreate ? 'Create' : 'Save'}}</button>
+    </mat-dialog-actions>
+  </div>
+</form>

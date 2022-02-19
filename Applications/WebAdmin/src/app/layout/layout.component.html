@@ -1,0 +1,13 @@
+<nz-layout>
+  <app-header [avatarURL]="avatar"></app-header>
+  <app-nav class="d-sm-block d-md-none"></app-nav>
+  <nz-layout>
+    <nz-sider class="d-none d-md-block" nzCollapsible nzBreakpoint="md" [(nzCollapsed)]="isCollapsed" [nzTrigger]="null"
+      style="background: #ffffff;">
+      <app-sider></app-sider>
+    </nz-sider>
+    <nz-content style="padding: 24px;">
+      <router-outlet></router-outlet>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

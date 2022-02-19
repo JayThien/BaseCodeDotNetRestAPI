@@ -1,0 +1,34 @@
+<nz-card nzTitle="Users" [nzExtra]="extra">
+  <ng-template #extra>
+    <button nz-button [routerLink]="['/user/', 0]"><i nz-icon nzType="plus"></i>New user</button>
+  </ng-template>
+
+  <nz-input-group [nzSuffix]="suffixIconSearch" style="width: 40%; margin-bottom: 20px;">
+    <input type="text" nz-input placeholder="Nhập tên hoặc số điện thoại" [(ngModel)]="usersRequest.searchTerm"
+      name="searchTerm" (keyup.enter)="loadData()" />
+    <ng-template #suffixIconSearch>
+      <i nz-icon nzType="search" (click)="loadData()"></i>
+    </ng-template>
+  </nz-input-group>
+
+  <nz-table nzShowSizeChanger="false" [nzData]="usersResponse.data" [nzFrontPagination]="false"
+    [nzLoading]="loaderService.isLoading" [nzTotal]="usersResponse.totalRows" [nzPageSize]="usersRequest.rowsPerPage"
+    (nzQueryParams)="onQueryParamsChange($event)">
+    <thead>
+      <tr>
+        <th>Fullname</th>
+        <th>Date of birth</th>
+        <th>Phone number</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of usersResponse.data" (click)="detail(data.id)">
+        <td>{{ data.fullname }}</td>
+        <td>{{ data.dateOfBirth | date: 'dd/MM/yyyy' }}</td>
+        <td>{{data.phoneNumber | phone}}</td>
+        <td>{{ data.email }}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+</nz-card>

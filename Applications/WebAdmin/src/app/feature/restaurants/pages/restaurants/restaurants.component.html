@@ -1,0 +1,43 @@
+<nz-card nzTitle="Restaurants" [nzExtra]="extra">
+  <ng-template #extra>
+    <button nz-button [routerLink]="['/restaurant/',0]"><i nz-icon nzType="plus"></i>New restaurant</button>
+  </ng-template>
+  <nz-input-group [nzSuffix]="suffixIconSearch" style="width: 40%; margin-bottom: 20px;">
+    <input type="text" nz-input placeholder="Please input the phonenumber or name of restaurant" name="searchTerm"
+      [(ngModel)]="restaurantsRequest.searchTerm" (keyup.enter)="loadData()" />
+    <ng-template #suffixIconSearch>
+      <i nz-icon nzType="search" (click)="loadData()"></i>
+    </ng-template>
+  </nz-input-group>
+  <!-- <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select country" [(ngModel)]="restaurantsRequest.countryCodes"
+        nzMode="multiple" (ngModelChange)="loadData()">
+        <nz-option *ngFor="let country of countries" nzCustomContent [nzLabel]="country.label"
+          [nzValue]="country.value">
+          <img class="flat-icon" [src]="country.icon" />{{country.label}}
+        </nz-option>
+      </nz-select> -->
+
+  <nz-table nzShowSizeChanger="false" [nzData]="restaurantsResponse.data" [nzFrontPagination]="false"
+    [nzLoading]="loaderService.isLoading" [nzTotal]="restaurantsResponse.totalRows"
+    [nzPageSize]="restaurantsRequest.rowsPerPage" (nzQueryParams)="onQueryParamsChange($event)">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Phonenumber</th>
+        <th style="min-width: 200px;">Email</th>
+        <th style="width: 150px;">Country</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of restaurantsResponse.data" (click)="detail(data.id)">
+        <td>{{ data.name }}</td>
+        <td>{{ data.address}}</td>
+        <td>{{ data.phoneNumber }}</td>
+        <td>{{ data.email }}</td>
+        <td> <img class="flat-icon" [src]="countryFlag.get(data.country)">{{countryName.get(data.country)}}</td>
+
+      </tr>
+    </tbody>
+  </nz-table>
+</nz-card>

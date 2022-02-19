@@ -1,0 +1,49 @@
+<div class="header">
+  <div class="row justify-content-between">
+    <div class="col-xl-1 col-lg-3 col-md-12 ">
+      <h1 class="header-title">Users</h1>
+    </div>
+    <div class="col-xl-4 col-lg-4 col-md-12">
+      <app-search-box (searchOnChange)="searchOnChange($event)"></app-search-box>
+    </div>
+    <div class="col-xl-2 col-lg-4 col-md-12">
+      <div style="float: right;">
+        <button mat-raised-button (click)="create()">
+          ADD NEW USER
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="content">
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="userReponse.data">
+      <ng-container matColumnDef="fullname">
+        <th mat-header-cell *matHeaderCellDef>Fullname</th>
+        <td mat-cell *matCellDef="let element"> {{element.fullname}} </td>
+      </ng-container>
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+      <ng-container matColumnDef="phoneNumber">
+        <th mat-header-cell *matHeaderCellDef>Phone</th>
+        <td mat-cell *matCellDef="let element"> {{element.phoneNumber | phone}} </td>
+      </ng-container>
+      <ng-container matColumnDef="roleName">
+        <th mat-header-cell *matHeaderCellDef style="width: 200px;"> Job </th>
+        <td mat-cell *matCellDef="let element"> {{element.roleName}} </td>
+      </ng-container>
+      <tr class="mat-row empty-row" *matNoDataRow>
+        <td class="mat-cell" colspan="9999">
+         <h3>No Data</h3>
+        </td>
+      </tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="detail(row)"></tr>
+    </table>
+
+    <app-paginator [total]="userReponse.totalRows" [pageIndex]="userReponse.pageNumber"
+      [pageSize]="userRequest.rowsPerPage" (pageIndexChange)="pageOnChange($event)"></app-paginator>
+  </div>
+</div>

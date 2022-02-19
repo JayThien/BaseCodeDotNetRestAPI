@@ -1,0 +1,18 @@
+<div class="error">
+  <p *ngIf="control.hasError('required')">
+    {{config.required(controlName)}}
+  </p>
+  <p *ngIf="control.hasError('email')">
+    {{config.emailInvalid()}}
+  </p>
+
+  <p *ngIf="control.hasError('minlength') ">
+    {{config.minLength(controlName, control.errors?.minlength.requiredLength)}}
+  </p>
+  <p *ngIf="control.hasError('maxlength') ">
+    {{config.maxlength(controlName, control.errors?.maxlength.requiredLength)}}
+  </p>
+  <p *ngIf="control.hasError('phoneInvalid')">
+    {{config.phoneInvalid()}}
+  </p>
+</div>

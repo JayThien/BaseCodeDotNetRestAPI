@@ -1,0 +1,64 @@
+.background-header {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 210px;
+  background-color: #039be5 !important;
+}
+
+.layout {
+  padding: 0 32px;
+}
+.header {
+  margin: 40px 0;
+
+  .header-icon {
+    font-size: 24px/32px !important;
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    line-height: 32px !important;
+    color: #fff !important;
+    vertical-align: middle;
+  }
+
+  .header-icon:hover {
+    cursor: pointer;
+  }
+
+  .header-title {
+    // font-size: 24px;
+    font-weight: 400;
+    color: #fff !important;
+    display: inline;
+    vertical-align: middle;
+  }
+}
+
+.content {
+  table {
+    width: 100%;
+    tbody tr:not(.empty-row):hover {
+      background: whitesmoke;
+    }
+
+    .empty-row {
+      td {
+        vertical-align: middle;
+        background-image: url("../../../assets/images/common/empty.svg") !important;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 480px !important;
+        text-align: center;
+
+        h3 {
+          margin-top: 120px;
+        }
+      }
+    }
+  }
+}
+ 

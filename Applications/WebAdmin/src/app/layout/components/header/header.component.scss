@@ -1,0 +1,30 @@
+.action {
+  float: right;
+  nz-avatar {
+    margin-left: 16px;
+  }
+  [nz-button] {
+    border: 0px;
+    margin: 0 8px;
+    [nz-icon] {
+      font-size: 20px;
+    }
+  }
+  [nz-button]:hover {
+    [nz-icon] {
+      color: rgb(0, 82, 204);
+    }
+    background-color: rgba(222, 235, 255, 0.9);
+  }
+}
+
+nz-header {
+  padding: 0 20px;
+  background: #ffffff;
+  box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+  margin-bottom: 2px;
+}
+
+.logo {
+  float: left;
+}

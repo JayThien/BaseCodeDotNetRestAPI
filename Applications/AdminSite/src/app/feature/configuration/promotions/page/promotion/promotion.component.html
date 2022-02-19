@@ -1,0 +1,80 @@
+<form [formGroup]="form" (keyup.enter)="submit()" novalidate>
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <h1 mat-dialog-title>New Promotion</h1>
+      <span class="spacer"></span>
+      <mat-icon mat-dialog-close>close_outlined</mat-icon>
+    </mat-toolbar-row>
+    <mat-toolbar-row class="d-flex justify-content-center" style="height: 160px;">
+      <app-uploader [value]="form.value.imageUrl" [size]="96" (uploaded)="uploaded($event)">
+      </app-uploader>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div class="content-wrapper">
+    <mat-dialog-content class="mat-typography">
+      <mat-form-field appearance="outline">
+        <mat-label>Code</mat-label>
+        <input matInput placeholder="Promotion code" formControlName="code">
+      </mat-form-field>
+
+      <div class="row">
+        <div class="col-xl-8">
+          <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea [rows]="6" matInput placeholder="Promotion description" formControlName="description"></textarea>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-4">
+          <mat-form-field appearance="outline">
+            <mat-label>From</mat-label>
+            <input matInput [matDatepicker]="fronPicker" formControlName="from">
+            <mat-datepicker-toggle matSuffix [for]="fronPicker"></mat-datepicker-toggle>
+            <mat-datepicker #fronPicker></mat-datepicker>
+            <mat-error>
+              <app-validation-message [control]="form.controls.from" controlName="Promotion from">
+              </app-validation-message>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>To</mat-label>
+            <input matInput [matDatepicker]="toPicker" formControlName="to">
+            <mat-datepicker-toggle matSuffix [for]="toPicker"></mat-datepicker-toggle>
+            <mat-datepicker #toPicker></mat-datepicker>
+            <mat-error>
+              <app-validation-message [control]="form.controls.to" controlName="Promotion to">
+              </app-validation-message>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Min point</mat-label>
+            <input matInput type="number" placeholder="Min point" formControlName="minPoint">
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Max point</mat-label>
+            <input matInput type="number" placeholder="Max point" formControlName="maxPoint">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-6">
+          <app-select-country [value]="form.value.country"></app-select-country>
+        </div>
+        <div class="col-xl-6">
+          <app-select-area [value]="form.value.areaId"></app-select-area>
+        </div>
+      </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-stroked-button [mat-dialog-close]="true" cdkFocusInitial (click)="submit()"
+        [disabled]="form.invalid">{{isCreate ? 'Create' : 'Save'}}</button>
+    </mat-dialog-actions>
+  </div>
+</form>

@@ -1,0 +1,28 @@
+<div class="container">
+  <nz-card [nzTitle]="title" [nzExtra]="extra">
+    <div *ngIf="menuItems.length == 0">
+      <nz-empty></nz-empty>
+    </div>
+    <ng-container *ngFor="let item of menuItems">
+      <div *ngIf="item.id > 0" nz-card-grid [ngStyle]="gridStyle">
+        <a [routerLink]="['/menu/',item.id]">{{item.areaName}}</a>
+        <i style="position: absolute; top: 10px; right: 10px;" nz-icon nzType="close" (click)="delete(item)"></i>
+      </div>
+      <div *ngIf="item.id == 0" nz-card-grid [ngStyle]="gridStyle">
+        <nz-select style="width: 70%;" nzShowSearch nzAllowClear nzPlaceHolder="Select admin area" [(ngModel)]="areaId"
+          name="newArea">
+          <nz-option *ngFor="let area of areas" [nzLabel]="area.name" [nzValue]="area.id">
+          </nz-option>
+        </nz-select>
+        <i class="action" nz-icon nzType="check" style="color: green;" (click)="save()"></i>
+        <i class="action" nz-icon nzType="close" style="color: red;" (click)="discard()"></i>
+      </div>
+    </ng-container>
+  </nz-card>
+  <ng-template #title>
+    <img class="flat-icon" [src]="countryFlag.get(country)" style="margin-right: 6px;"> {{countryName.get(country)}}
+  </ng-template>
+  <ng-template #extra>
+    <button nz-button nzType="default" nzShape="circle" (click)="add()"><i nz-icon nzType="plus"></i></button>
+  </ng-template>
+</div>

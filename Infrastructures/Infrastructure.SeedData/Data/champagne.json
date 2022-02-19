@@ -1,0 +1,32 @@
+﻿[
+  {
+    "Name": "BOLLINGER ROSE",
+    "Description": "To the eye: bronze tones combined with the intense depth of a great red wine. To the nose: the nobility of red berries: hints of red currant, cherry and wild strawberry;a spicy touch, not unlike Special Cuvée. To the palate: a subtle combination of structure, length and vivacity, with a tannic finish due to the adjunction of red wine; bubbles as fine as velvet; flavours of wild berries.Cellar aged for more than twice the time required by the appellation.it pairs well with crayfish, lobster, one-side cooked salmon. Japanese cuisine or not-so-spicy Asian cuisine.",
+    "Price": 3120000
+  },
+  {
+    "Name": "BOLLINGER SPECIAL CUVEE BRUT",
+    "Description": "To the eye: A golden colour, distinctive of black grape varieties; very ne bubbles. To the nose: A beautiful aromatic complexity; ripe fruit and spicy aromas; hints of roasted apples, apple compote and peaches. On the palate: A subtle combination of structure, length and vivacity; bubbles like velvet; pear, brioche and spicy aromas, notes of fresh walnut.This wine goes very well with any fish, especially sushi and sashimi. Seafood: shrimp, prawn, crayfish, grilled lobster. Poultry and white meat. Parmesan, good cured ham.",
+    "Price": 2580000
+  },
+  {
+    "Name": "DOM PERIGNON",
+    "Description": "Dom Pérignon (1638–1715) was a monk and cellar master at the Benedictine abbey in Hautvillers. He pioneered a number of winemaking techniques around 1670—being the first to blend grapes in such a way as to improve the quality of wines, balance one element with another in order to make a better whole, and deal with a number of their imperfections; perfecting the art of producing clear white wines from black grapes by clever manipulation of the presses.Dom Perignon has an intense, full and radiant bouquet with notes of honeysuckle, orange coloured fruits and hints of iodine sensations. The creamy chewiness characterizing the vintage is channelled in a direction that is edgy yet embracing with a wave of aromatic persistence. Smoky, biting and full energy finish balances it all out.The Dom Perignon pairs very well with sushi, scallops, oysters, white fish, white meat.",
+    "Price": 12000000
+  },
+  {
+    "Name": "KRUG GRANDE CUVEE",
+    "Description": "Behind every precious drop of Krug stands the dream of a visionary. One man who, long before others, understood that the essence of Champagne is pleasure. So, over 170 years ago, Joseph Krug broke with convention to follow his vision. To create the most generous expression of Champagne every year, regardless of climatic unpredictability.Joseph’s bold experiment proved a triumph and he succeeded in creating Champagne like never before. And like no other Champagne House since. To this day, the House of Krug lives and breathes his enduring philosophy, creating only prestige Champagnes since 1843. Deep golden colour and fine, vivacious bubbles, predicting fullness and elegance. Aromas of flowers in bloom, ripe & dried fruit, marzipan, gingerbread and citrus fruits. Flavours of hazelnut, nougat, barley sugar, jellied and citrus fruits, almonds, brioche and honey.Krug Grande Cuvée lends itself to a plethora of culinary combinations, from the simplest to the most sophisticated, from an extra mature parmesan to a dish of turbot à la truffle.",
+    "Price": 12500000
+  },
+  {
+    "Name": "TAITTINGER BRUT RESERVE",
+    "Description": "Brut Réserve Taittinger is one of the last great Champagne Houses to remain independent and is owned and actively managed by the family named on the label. The family are guardians of Taittinger’s style quality and integrity. The hallmark of their fine Champagnes is the high proportion of Chardonnay used in their winemaking which is key, in the Champagne region, for producing wines of great elegance and finesse. Additionally, with its vineyard ownership of 288 ha (one of the largest in Champagne), Taittinger can guarantee a flawless signature, and wines heralded worldwide for their consistent quality. Our signature cuvée, Taittinger Brut Réserve, is assembled from more than 35 crus and incorporates 40% Chardonnay – this high level is seldom offered in a non-vintage Champagne. Distinguished by a delicate nose marked by subtle brioche notes, it has a palate of considerable depth and balance with hints of honey and fresh fruit with a long, fresh finish.",
+    "Price": 2100000
+  },
+  {
+    "Name": "VEUVE CLICQUOT BRUT",
+    "Description": "A Champagne House is eventually judged on the quality of its Brut Non Vintage. It is in the making of such a wine that the true Art of Champagne blending reveals itself. This is an art in which the House of Veuve Clicquot excels. Our Brut Yellow Label reflects the superb vineyards we own and the consistent nature of our House style.The predominance of Pinot Noir provides the structure that is so typically Clicquot, while a touch of Pinot Meunier rounds out the blend. Chardonnay adds the elegance and finesse essential in a perfectly balanced wine.",
+    "Price": 2340000
+  }
+]

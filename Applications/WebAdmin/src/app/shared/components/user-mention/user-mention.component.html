@@ -1,0 +1,25 @@
+<nz-mention [nzSuggestions]="suggestions" [nzLoading]="loaderService.isLoading"
+  (nzOnSearchChange)="onSearchChange($event)" [nzValueWith]="valueWith" (nzOnSelect)="onSelectedMention($event)">
+  <textarea nz-input [nzAutosize]="isMultiRow ? { minRows: 4, maxRows: 4 } : { minRows: 1, maxRows: 1 }"
+    [(ngModel)]="inputValue" (ngModelChange)="onChange($event)" nzMentionTrigger> </textarea>
+  <ng-container *nzMentionSuggestion="let userMention">
+    <table>
+      <thead>
+        <th></th>
+        <th></th>
+        <th></th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <nz-avatar nzSize="small" [nzText]="userMention.fullname" [nzSrc]="userMention.avatarURL"></nz-avatar>
+          </td>
+          <td>
+            <span>{{ userMention.fullname }}</span></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </ng-container>
+</nz-mention>

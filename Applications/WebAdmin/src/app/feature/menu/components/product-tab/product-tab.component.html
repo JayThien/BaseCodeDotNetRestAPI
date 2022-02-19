@@ -1,0 +1,57 @@
+<nz-table nzShowSizeChanger="false" [nzData]="productsResponse.data" [nzFrontPagination]="false"
+  [nzLoading]="loaderService.isLoading" [nzTotal]="productsResponse.totalRows"
+  [nzPageSize]="productsRequest.rowsPerPage" (nzQueryParams)="onQueryParamsChange($event)">
+  <thead>
+    <tr>
+      <th nzCustomFilter>
+        Name
+        <nz-filter-trigger [nzActive]="productsRequest.searchTerm.length > 0" [nzDropdownMenu]="searchMenu">
+          <i nz-icon nzType="search"></i>
+        </nz-filter-trigger>
+      </th>
+      <th style="width: 240px;">
+        <nz-filter-trigger [nzVisible]="false" [nzActive]="productsRequest.searchTerm.length > 0"
+          [nzDropdownMenu]="filter">
+          <i nz-icon nzType="filter"></i>
+        </nz-filter-trigger>
+        Subcategory
+      </th>
+      <th style="width: 240px;">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of productsResponse.data" [ngClass]="{'un-available': !data.isAvailable}"
+      (click)="detail(data.id)">
+      <td>{{ data.name }}</td>
+      <td>{{ subCategoryName.get(data.subCategory) }}</td>
+      <td>{{ data.price }} {{ data.currency }}</td>
+    </tr>
+  </tbody>
+</nz-table>
+
+<nz-dropdown-menu #searchMenu="nzDropdownMenu">
+  <div class="ant-table-filter-dropdown">
+    <div class="search-box">
+      <input type="text" nz-input placeholder="Search name" [(ngModel)]="productsRequest.searchTerm" />
+      <button nz-button nzSize="small" nzType="primary" (click)="search()" class="search-button">
+        Search
+      </button>
+      <button nz-button nzSize="small" (click)="reset()">Reset</button>
+    </div>
+  </div>
+</nz-dropdown-menu>
+
+<nz-dropdown-menu #filter="nzDropdownMenu">
+  <div class="ant-table-filter-dropdown">
+    <div class="search-box">
+      <p> {{categoryName.get(productsRequest.category)}} </p>
+      <nz-checkbox-wrapper (nzOnChange)="subCategoryOnChange($event)">
+        <div *ngFor="let subCategory of categoryChild.get(productsRequest.category)">
+          <label nz-checkbox [nzValue]="subCategory">{{subCategoryName.get(subCategory)}}
+          </label>
+        </div>
+      </nz-checkbox-wrapper>
+      <nz-divider></nz-divider>
+    </div>
+  </div>
+</nz-dropdown-menu>

@@ -1,0 +1,11 @@
+<nz-form-item>
+  <nz-form-label>Subcategory</nz-form-label>
+  <nz-form-control>
+    <nz-select *ngIf="!isView" nzShowSearch [(ngModel)]="value" (ngModelChange)="selected.emit(value)">
+      <nz-option *ngFor="let subCategory of subCategories" [nzLabel]="subCategoriesName.get(subCategory)"
+        [nzValue]="subCategory">
+      </nz-option>
+    </nz-select>
+    <span nz-typography *ngIf="isView">{{subCategoriesName.get(value)}}</span>
+  </nz-form-control>
+</nz-form-item>

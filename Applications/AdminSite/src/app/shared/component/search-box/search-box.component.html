@@ -1,0 +1,8 @@
+<div class="search-wrapper">
+  <div class="search-box">
+    <form (keyup.enter)="search()" style="display: contents !important;">
+      <mat-icon>search</mat-icon>
+      <input type="text" placeholder="Search" [(ngModel)]="searchTerm" name="search-input">
+    </form>
+  </div>
+</div>

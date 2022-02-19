@@ -1,0 +1,23 @@
+@import "../../../configuration.component.scss";
+@import "../../../../../../styles.scss";
+mat-form-field {
+  width: 100%;
+}
+
+.custom-mat-dialog .mat-dialog-container {
+  padding: 0;
+  overflow: hidden;
+
+  .mat-toolbar {
+    color: #fff;
+    background-color: #039be5 !important;
+  }
+
+  .mat-dialog-content {
+    padding: 24px 40px 0;
+  }
+  .mat-dialog-actions {
+    padding: 8px 24px;
+    margin-bottom: 0;
+  }
+}

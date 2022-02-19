@@ -1,0 +1,75 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Extensions\**" />
+    <Compile Remove="Helper\**" />
+    <Compile Remove="Http\**" />
+    <Compile Remove="Model\**" />
+    <Compile Remove="Repositories\**" />
+    <EmbeddedResource Remove="Extensions\**" />
+    <EmbeddedResource Remove="Helper\**" />
+    <EmbeddedResource Remove="Http\**" />
+    <EmbeddedResource Remove="Model\**" />
+    <EmbeddedResource Remove="Repositories\**" />
+    <None Remove="Extensions\**" />
+    <None Remove="Helper\**" />
+    <None Remove="Http\**" />
+    <None Remove="Model\**" />
+    <None Remove="Repositories\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="EmailTemplate\Booking.html" />
+    <None Remove="EmailTemplate\Order.html" />
+    <None Remove="EmailTemplate\Register.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="EmailTemplate\Register.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EmailTemplate\Booking.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EmailTemplate\Order.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="Dropbox.Api" Version="4.10.0" />
+    <PackageReference Include="FluentValidation" Version="8.6.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.10" />
+    <PackageReference Include="Microsoft.DotNet.PlatformAbstractions" Version="3.1.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.10" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\BuildingBlocks\Common\AspNetCore.Common\AspNetCore.Common.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\DataBinding\AspNetCore.DataBinding.AutoMapper\AspNetCore.DataBinding.AutoMapper.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\Domain\AspNetCore.Domain\AspNetCore.Domain.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\EmailSender\AspNetCore.EmailSender\AspNetCore.EmailSender.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\MVC\AspNetCore.Mvc.JwtBearer\AspNetCore.Mvc.JwtBearer.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\UnitOfWork\AspNetCore.UnitOfWork\AspNetCore.UnitOfWork.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\Validation\AspNetCore.FluentValidation\AspNetCore.FluentValidation.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="EmailTemplate\Order.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ReferenceData\RestaurantRef\Model\" />
+  </ItemGroup>
+
+</Project>

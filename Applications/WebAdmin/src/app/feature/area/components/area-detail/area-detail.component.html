@@ -1,0 +1,26 @@
+<nz-spin [nzSpinning]="loaderService.isLoading" nzSize="large">
+  <form nz-form [formGroup]="form" nzLayout="vertical">
+    <nz-form-item>
+      <nz-form-label>Name</nz-form-label>
+      <nz-form-control nzHasFeedback [nzErrorTip]="nameValidation">
+        <input nz-input formControlName="name" />
+        <ng-template #nameValidation let-control>
+          <app-validation-message [control]="control" controlName="name"></app-validation-message>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label>Code</nz-form-label>
+      <nz-form-control nzHasFeedback [nzErrorTip]="codeValidation">
+        <input nz-input formControlName="code" />
+        <ng-template #codeValidation let-control>
+          <app-validation-message [control]="control" controlName="code"></app-validation-message>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+    <app-select-country [isView]="false" [value]="form.controls.country.value" (selected)="countryOnChange($event)">
+    </app-select-country>
+    <app-select-user [isView]="false" [allowClear]="true" [value]="form.controls.userId.value" (selected)="userOnChange($event)">
+    </app-select-user>
+  </form>
+</nz-spin>

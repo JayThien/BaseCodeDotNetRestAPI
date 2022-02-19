@@ -1,0 +1,10 @@
+<mat-nav-list>
+  <ng-container *ngFor="let nav of sideNavs">
+    <div class="group">
+      <p>{{nav.group | uppercase}}</p>
+    </div>
+    <div *ngFor="let item of nav.children">
+      <a mat-list-item [routerLink]="item.path" routerLinkActive="hold">{{item.title}}</a>
+    </div>
+  </ng-container>
+</mat-nav-list>

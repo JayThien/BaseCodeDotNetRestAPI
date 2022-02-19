@@ -1,0 +1,38 @@
+<div class="form">
+  <form nz-form [nzLayout]="'vertical'" [nzAutoTips]="true" class="login-form" (ngSubmit)="signIn()"
+    (keyup.enter)="signIn()" [formGroup]="loginForm">
+    <div class="row h-100 justify-content-center align-items-center">
+      <img src="/assets/images/logo_ELGAUCHO_ASIA.png" alt="LOGO ELGAUCHO - ASIA-2" style="width: 60%; margin-bottom: 40px;" />
+    </div>
+    <!-- <h2 style="text-align: center;">Login</h2> -->
+    <nz-form-item>
+      <nz-form-label>Phonenumber</nz-form-label>
+      <nz-form-control nzHasFeedback nzErrorTip="Please input your phonenumber">
+        <nz-input-group>
+          <input type="text" nz-input nzSize="large" formControlName="username" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label>Password</nz-form-label>
+      <nz-form-control nzHasFeedback nzErrorTip="Please input your password">
+        <nz-input-group>
+          <input type="password" nz-input nzSize="large" formControlName="password" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <div nz-row class="login-form-margin">
+      <div nz-col [nzSpan]="12">
+        <label nz-checkbox name="rememberMe">
+          <span>Remember me</span>
+        </label>
+      </div>
+      <div nz-col [nzSpan]="12">
+        <a class="login-form-forgot">Forgot password</a>
+      </div>
+    </div>
+    <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'"
+      [nzLoading]="loaderService.isLoading"
+      [disabled]="!loginForm.valid">Log in</button>
+  </form>
+</div>
